@@ -109,10 +109,112 @@ Non-trainable params: 0
 ## Techniques Used
 
 ### Random Data Augmentaton
+This custom PyTorch transforms class RandomAugmentation is designed to apply a series of random data augmentations to MNIST grayscale images. The primary goal of this augmentation pipeline is to enhance the model's ability to generalize by exposing it to a wider variety of image variations, preventing overfitting, and improving its robustness to common image distortions.
+
+'''
+class RandomAugmentation:
+    """
+    Custom augmentation that randomly applies a sequence of transformations
+    to grayscale images, such as MNIST digits.
+    """
+    def __init__(self, p=0.7):
+        self.p = p  # Probability of applying any augmentation
+
+        # Define all available individual transforms
+        self.transforms_list = [
+            # 1. Randomly rotate the image by a specified degree range
+            transforms.RandomRotation(degrees=10),
+
+            # 2. Apply random affine transformations (rotations, translations, scaling)
+            transforms.RandomAffine(
+                degrees=10,
+                translate=(0.1, 0.1),  # Up to 10% translation
+                scale=(0.9, 1.1),      # Scaling between 90% and 110%
+                shear=10               # Shearing by 10 degrees
+            ),
+
+            # 3. Randomly shift the image by cropping a random portion
+            transforms.RandomResizedCrop(
+                size=28,  # Maintain the original image size for MNIST
+                scale=(0.8, 1.0),
+                ratio=(0.9, 1.1)
+            ),
+
+            # 4. Apply a random perspective transform
+            transforms.RandomPerspective(distortion_scale=0.2, p=1.0),
+
+            # 5. Simulate a change in brightness/contrast (effective even on grayscale)
+            transforms.ColorJitter(brightness=0.2, contrast=0.2),
+
+            # 6. Randomly erase a small portion of the image to force the model to learn from partial data
+            transforms.RandomErasing(p=1.0, scale=(0.02, 0.1), ratio=(0.3, 3.3))
+        ]
+
+    def add_noise(self, img):
+        """Add random Gaussian noise to a PyTorch tensor."""
+        noise = torch.randn_like(img) * 0.1
+        noisy_img = img + noise
+        return torch.clamp(noisy_img, 0., 1.)
+
+    def __call__(self, img):
+        """Applies a random number of augmentations (1 or 2) from the list."""
+
+        # With probability (1-p), return the original image
+        if random.random() > self.p:
+            return img
+
+        # Randomly decide how many augmentations to apply (1 or 2)
+        num_augmentations = random.randint(1, 2)
+
+        # Select a random subset of transformations without replacement
+        transforms_to_apply = random.sample(self.transforms_list, num_augmentations)
+
+        # Add noise as a separate, potential augmentation, not a core choice
+        if random.random() < 0.5: # 50% chance to also add noise
+            transforms_to_apply.append(self.add_noise)
+
+        # Apply the selected sequence of transformations
+        for transform in transforms_to_apply:
+            if callable(transform):
+                img = transform(img)
+            else:
+                img = transform(img)
+
+        return img
+'''
+
+'''
+The RandomAugmentation class applies a random selection of the following transformations to each image with a probability defined by the p parameter (set to 0.7 by default):
+
+    Random Rotation: Rotates the image randomly by up to 10∘.
+
+    Random Affine Transformations: Applies a combination of random rotations, translations, and scaling.
+
+    Random Resized Crop: Simulates slight shifts in the digit's position by cropping and resizing the image.
+
+    Random Perspective: Adds a random perspective distortion to the images.
+
+    Color Jitter: Randomly adjusts the brightness and contrast.
+
+    Random Erasing: Hides a small, random portion of the image to train the model to learn from incomplete data.
+
+By combining these diverse augmentations, the model is forced to focus on the essential features of the digits rather than relying on their exact position or orientation within the image.
+'''
 ### Use of MaxPool Layers         - to increase the receptive field.
+This is applied twice in our network to boost the receptive field and to reduce the size of the image in the network.
+
 ### Use of Batch Normalization
+Applied throughout the network for faster convergence and reduce dependency on dropout for regularization effect.
+
 ### Use of Dropout
+Applied for regularization.
+
 ### Use of GAP layer
+Spatial Reduction from 5x5 to 1x1 for the final layer to predict the correct class.
+
+### 1x1 Convolution
+Applied to reduce the number of kernels in subsequent layers thereby reducing the total number of parameters in the network but at the same time preserving the most important feature during the convolution.
+
 
 ```
 ```
