@@ -18,7 +18,7 @@
 
 - Distribution of each category in the training dataset.
 
-# link to image
+![alt text](https://github.com/asravankumar/ERAV4_ASSIGNMENT5/blob/main/assets/training_dataset.png?raw=true)
 
 ## Network Architecture
 
@@ -221,8 +221,12 @@ Applied to reduce the number of kernels in subsequent layers thereby reducing th
 ```
 
 ## Training Logs
-```
-```
+### Accuracy graph
+![alt text](https://github.com/asravankumar/ERAV4_ASSIGNMENT5/blob/main/assets/accuracy_graph.png?raw=true)
+### Loss graph
+![alt text](https://github.com/asravankumar/ERAV4_ASSIGNMENT5/blob/main/assets/loss_graph.png?raw=true)
+
+
 
 ## Training Loss & Accuracy Graphs
 
