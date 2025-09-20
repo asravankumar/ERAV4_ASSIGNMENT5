@@ -111,7 +111,7 @@ Non-trainable params: 0
 ### Random Data Augmentaton
 This custom PyTorch transforms class RandomAugmentation is designed to apply a series of random data augmentations to MNIST grayscale images. The primary goal of this augmentation pipeline is to enhance the model's ability to generalize by exposing it to a wider variety of image variations, preventing overfitting, and improving its robustness to common image distortions.
 
-'''
+```
 class RandomAugmentation:
     """
     Custom augmentation that randomly applies a sequence of transformations
@@ -181,9 +181,9 @@ class RandomAugmentation:
                 img = transform(img)
 
         return img
-'''
+```
 
-'''
+```
 The RandomAugmentation class applies a random selection of the following transformations to each image with a probability defined by the p parameter (set to 0.7 by default):
 
     Random Rotation: Rotates the image randomly by up to 10∘.
@@ -199,7 +199,8 @@ The RandomAugmentation class applies a random selection of the following transfo
     Random Erasing: Hides a small, random portion of the image to train the model to learn from incomplete data.
 
 By combining these diverse augmentations, the model is forced to focus on the essential features of the digits rather than relying on their exact position or orientation within the image.
-'''
+```
+
 ### Use of MaxPool Layers         - to increase the receptive field.
 This is applied twice in our network to boost the receptive field and to reduce the size of the image in the network.
 
