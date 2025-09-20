@@ -220,7 +220,7 @@ Applied to reduce the number of kernels in subsequent layers thereby reducing th
 ```
 ```
 
-## Training Logs
+## Training Loss & Accuracy Graphs
 ### Accuracy graph
 ![alt text](https://github.com/asravankumar/ERAV4_ASSIGNMENT5/blob/main/assets/accuracy_graph.png?raw=true)
 ### Loss graph
@@ -228,5 +228,78 @@ Applied to reduce the number of kernels in subsequent layers thereby reducing th
 
 
 
-## Training Loss & Accuracy Graphs
+## Training Logs
+```
+Epoch 1/20:
+Training: 100%|██████████| 235/235 [00:32<00:00,  7.16batch/s, acc=81.92%, loss=0.221]
+  Train Loss: 0.7086, Train Accuracy: 81.92%
+  Test Loss: 0.1282, Test Accuracy: 96.92%
+--------------------------------------------------
+--------------------------------------------------
+Epoch 2/20:
+Training: 100%|██████████| 235/235 [00:32<00:00,  7.19batch/s, acc=95.67%, loss=0.194]
+  Train Loss: 0.1630, Train Accuracy: 95.67%
+  Test Loss: 0.0903, Test Accuracy: 97.46%
+--------------------------------------------------
+--------------------------------------------------
+Epoch 3/20:
+Training: 100%|██████████| 235/235 [00:32<00:00,  7.13batch/s, acc=96.60%, loss=0.154]
+  Train Loss: 0.1201, Train Accuracy: 96.60%
+  Test Loss: 0.0701, Test Accuracy: 97.85%
+--------------------------------------------------
+--------------------------------------------------
+Epoch 4/20:
+Training: 100%|██████████| 235/235 [00:32<00:00,  7.26batch/s, acc=97.14%, loss=0.0971]
+  Train Loss: 0.0960, Train Accuracy: 97.14%
+  Test Loss: 0.0456, Test Accuracy: 98.60%
+--------------------------------------------------
+--------------------------------------------------
+Epoch 5/20:
+Training: 100%|██████████| 235/235 [00:32<00:00,  7.21batch/s, acc=97.48%, loss=0.12]
+  Train Loss: 0.0849, Train Accuracy: 97.48%
+  Test Loss: 0.0398, Test Accuracy: 98.89%
+--------------------------------------------------
+--------------------------------------------------
+Epoch 6/20:
+Training: 100%|██████████| 235/235 [00:32<00:00,  7.24batch/s, acc=97.88%, loss=0.0323]
+  Train Loss: 0.0717, Train Accuracy: 97.88%
+  Test Loss: 0.0479, Test Accuracy: 98.51%
+--------------------------------------------------
+--------------------------------------------------
+Epoch 7/20:
+Training: 100%|██████████| 235/235 [00:32<00:00,  7.15batch/s, acc=97.94%, loss=0.0214]
+  Train Loss: 0.0677, Train Accuracy: 97.94%
+  Test Loss: 0.0496, Test Accuracy: 98.31%
+--------------------------------------------------
+--------------------------------------------------
+Epoch 8/20:
+Training: 100%|██████████| 235/235 [00:32<00:00,  7.23batch/s, acc=98.06%, loss=0.0202]
+  Train Loss: 0.0624, Train Accuracy: 98.06%
+  Test Loss: 0.0351, Test Accuracy: 98.83%
+--------------------------------------------------
+--------------------------------------------------
+Epoch 9/20:
+Training: 100%|██████████| 235/235 [00:32<00:00,  7.21batch/s, acc=98.16%, loss=0.0261]
+  Train Loss: 0.0599, Train Accuracy: 98.16%
+  Test Loss: 0.0307, Test Accuracy: 99.06%
+--------------------------------------------------
+--------------------------------------------------
+Epoch 10/20:
+Training: 100%|██████████| 235/235 [00:32<00:00,  7.33batch/s, acc=98.30%, loss=0.139]
+  Train Loss: 0.0564, Train Accuracy: 98.30%
+  Test Loss: 0.0356, Test Accuracy: 98.81%
+--------------------------------------------------
+--------------------------------------------------
+Epoch 11/20:
+Training: 100%|██████████| 235/235 [00:32<00:00,  7.14batch/s, acc=98.50%, loss=0.0587]
+  Train Loss: 0.0472, Train Accuracy: 98.50%
+  Test Loss: 0.0216, Test Accuracy: 99.37%
+--------------------------------------------------
+--------------------------------------------------
+Epoch 12/20:
+Training: 100%|██████████| 235/235 [00:32<00:00,  7.17batch/s, acc=98.68%, loss=0.0353]
+  Train Loss: 0.0441, Train Accuracy: 98.68%
+  Test Loss: 0.0210, Test Accuracy: 99.41%
+--------------------------------------------------
+```
 
